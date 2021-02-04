@@ -1,2 +1,2 @@
-# zinemaker
-A web app to make zines and other cool stuff
+# Web Scraping
+Scripts para estudo e base para projetos futuros
