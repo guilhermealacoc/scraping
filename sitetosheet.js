@@ -17,8 +17,8 @@ const xlsx = require("xlsx");
   //console.log(allAslinks)  
   const wb = xlsx.utils.book_new();
   const ws = xlsx.utils.aoa_to_sheet(aoaLinks);
-  xlsx.utils.book_append_sheet(wb, ws);
-  xlsx.writeFile(wb, "links.xlxs");
+  xlsx.utils.book_append_sheet(wb,ws);
+  xlsx.writeFile(wb, "links.xlsx");
 
   await browser.close();
 })();
