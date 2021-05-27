@@ -1,0 +1,24 @@
+{
+  "name": "scraping",
+  "version": "1.0.0",
+  "description": "Scripts para estudo e base para projetos futuros",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guilhermealacoc/scraping.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guilhermealacoc/scraping/issues"
+  },
+  "homepage": "https://github.com/guilhermealacoc/scraping#readme",
+  "dependencies": {
+    "puppeteer": "^9.1.1",
+    "xlsx": "^0.17.0"
+  }
+}
