@@ -41,17 +41,19 @@ async function main(){
   const scrapedData = [];
   
   for(let link of allLinks){
-    const data = await getPageData(link, page)
-    scrapedData.push(data)
-    
+    const data = await getPageData(link, page);
+    await page.waitForTimeout(1000);
+    scrapedData.push(data);  
   }
 
   const wb = xlsx.utils.book_new();
   const ws = xlsx.utils.json_to_sheet(scrapedData)
   xlsx.utils.book_append_sheet(wb,ws);
-  xlsx.writeFile(wb, "dadosdoslivros.xlsx");
+  xlsx.writeFile(wb, "dadosdostestando.xlsx");
 
   console.log(scrapedData)
+
+  await browser.close();
 }
 
 main();
