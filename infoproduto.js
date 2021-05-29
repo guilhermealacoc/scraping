@@ -38,12 +38,20 @@ async function main(){
 
   const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
+  const scrapedData = [];
   
   for(let link of allLinks){
     const data = await getPageData(link, page)
-    console.log(data)
+    scrapedData.push(data)
+    
   }
 
+  const wb = xlsx.utils.book_new();
+  const ws = xlsx.utils.json_to_sheet(scrapedData)
+  xlsx.utils.book_append_sheet(wb,ws);
+  xlsx.writeFile(wb, "dadosdoslivros.xlsx");
+
+  console.log(scrapedData)
 }
 
 main();
