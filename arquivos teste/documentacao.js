@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 const xlsx = require("xlsx");
 
-async function getPageData (url,page){
+async function scrapconteudo (url,page){
   
   await page.goto(url);
 
@@ -14,7 +14,6 @@ async function getPageData (url,page){
     price: price,
     instock: instock
   }
-  //await browser.close();
 };
 
 async function getLinks(){
@@ -34,24 +33,24 @@ async function getLinks(){
 
 async function main(){
 
-  const allLinks = await getLinks();
+  const todosOsLinks = await getLinks();
 
   const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
-  const scrapedData = [];
+  const dadosRetirados = [];
   
-  for(let link of allLinks){
-    const data = await getPageData(link, page);
+  for(let link of todosOsLinks){
+    const data = await scrapconteudo(link, page);
     await page.waitForTimeout(1000);
-    scrapedData.push(data);  
+    dadosRetirados.push(data);  
   }
 
   const wb = xlsx.utils.book_new();
-  const ws = xlsx.utils.json_to_sheet(scrapedData)
+  const ws = xlsx.utils.json_to_sheet(dadosRetirados)
   xlsx.utils.book_append_sheet(wb,ws);
-  xlsx.writeFile(wb, "eitapreula.xlsx");
+  xlsx.writeFile(wb, "DocumentoFinal.xlsx");
 
-  console.log(scrapedData)
+  console.log(dadosRetirados)
 
   await browser.close();
 }
